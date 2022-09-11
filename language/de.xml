@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/language.xsd" languagecode="de" languagename="Deutsch" countrycode="de">
+	<!-- Options -->
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.module_compulsory"><![CDATA[Pflicht-Thema]]></item>
+		<item name="wcf.acp.option.category.user.compulsory"><![CDATA[Pflicht-Thema]]></item>
+		<item name="wcf.acp.option.user_compulsory_defaultTitle"><![CDATA[Standard-Seitentitel]]></item>
+		<item name="wcf.acp.option.user_compulsory_defaultTitle.description"><![CDATA[Bei „Nein“ wird der Titel des Pflichtthemas als Seitentitel genutzt.]]></item>
+		<item name="wcf.acp.option.user_compulsory_exceptions"><![CDATA[Ausnahmen]]></item>
+		<item name="wcf.acp.option.user_compulsory_exceptions.description"><![CDATA[ID der Seiten, die trotz Pflicht-Thema angezeigt werden dürfen. Eine ID pro Zeile. Die Seiten-ID kann im ACP über Inhalt - Seiten ermittelt werden.]]></item>
+		<item name="wcf.acp.option.user_compulsory_print"><![CDATA[Drucken]]></item>
+		<item name="wcf.acp.option.user_compulsory_print.description"><![CDATA[Blendet im Pflichtthema eine Drucken-Schaltfläche ein oder aus.]]></item>
+		<item name="wcf.acp.option.user_compulsory_stats_old"><![CDATA[Alte Statistik-Ansicht]]></item>
+		<item name="wcf.acp.option.user_compulsory_stats_old.description"><![CDATA[Schaltet zwischen alter und neuer Statistik-Ansicht um.]]></item>
+		<item name="wcf.acp.option.user_compulsory_url"><![CDATA[Weiterleitung]]></item>
+		<item name="wcf.acp.option.user_compulsory_url.description"><![CDATA[Benutzer werden nach Bestätigung der Pflichtthemen zu der angegebenen URL weitergeleitet. Wird keine URL angegeben, wird zur Hauptseite der Community weitergeleitet.]]></item>
+	</category>
+	
+	<!-- Group Permission -->
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.admin.user.compulsory"><![CDATA[Pflicht-Thema]]></item>
+		<item name="wcf.acp.group.option.admin.user.canManageCompulsory"><![CDATA[Kann Pflicht-Themen verwalten]]></item>
+	</category>
+	
+	<!-- Menu -->
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.compulsory"><![CDATA[Pflicht-Thema]]></item>
+		<item name="wcf.acp.menu.link.compulsory.add"><![CDATA[Thema hinzufügen]]></item>
+		<item name="wcf.acp.menu.link.compulsory.list"><![CDATA[Themen]]></item>
+	</category>
+	
+	<!-- ACP -->
+	<category name="wcf.acp.compulsory">
+		<item name="wcf.acp.compulsory.action"><![CDATA[Aktionen]]></item>
+		<item name="wcf.acp.compulsory.action.accept"><![CDATA[Bei Zustimmung]]></item>
+		<item name="wcf.acp.compulsory.action.description"><![CDATA[Optional können Aktionen bei Zustimmung und/oder Ablehnung ausgeführt werden.]]></item>
+		<item name="wcf.acp.compulsory.action.group.add"><![CDATA[Benutzergruppen zuweisen]]></item>
+		<item name="wcf.acp.compulsory.action.group.add.description"><![CDATA[Der Benutzer wird in die gewählten Benutzergruppen aufgenommen.]]></item>
+		<item name="wcf.acp.compulsory.action.group.error.invalidGroup"><![CDATA[Es wurde eine ungültige Benutzergruppe angegeben.]]></item>
+		<item name="wcf.acp.compulsory.action.group.remove"><![CDATA[Aus Benutzergruppen entfernen]]></item>
+		<item name="wcf.acp.compulsory.action.group.remove.description"><![CDATA[Der Benutzer wird aus den gewählten Benutzergruppen entfernt.]]></item>
+		<item name="wcf.acp.compulsory.action.refuse"><![CDATA[Bei Ablehnung]]></item>
+		<item name="wcf.acp.compulsory.action.url"><![CDATA[Weiterleitung]]></item>
+		<item name="wcf.acp.compulsory.action.url.description"><![CDATA[Vollständige URL für die Weiterleitung nach Zustimmung / Ablehnung. Wird keine URL angegeben, wird zu der zentral unter „Konfiguration“ angegebenen Seite weitergeleitet.]]></item>
+		<item name="wcf.acp.compulsory.action.user"><![CDATA[Benutzer-Status]]></item>
+		<item name="wcf.acp.compulsory.action.user.ban"><![CDATA[sperren]]></item>
+		<item name="wcf.acp.compulsory.action.user.description"><![CDATA[Die Benutzer-Aktion wird immer vor der Gruppen-Aktion ausgeführt.]]></item>
+		<item name="wcf.acp.compulsory.action.user.disable"><![CDATA[deaktivieren]]></item>
+		<item name="wcf.acp.compulsory.action.user.enable"><![CDATA[aktivieren]]></item>
+		<item name="wcf.acp.compulsory.action.user.none"><![CDATA[keine Aktion]]></item>
+		<item name="wcf.acp.compulsory.add"><![CDATA[Thema hinzufügen]]></item>
+		<item name="wcf.acp.compulsory.addNewUser"><![CDATA[Neue Benutzer einbeziehen]]></item>
+		<item name="wcf.acp.compulsory.addNewUser.description"><![CDATA[Pflicht-Thema auch Benutzern anzeigen, die nach Erstellung des Themas dazugekommen sind.]]></item>
+		<item name="wcf.acp.compulsory.conditions"><![CDATA[Bedingungen]]></item>
+		<item name="wcf.acp.compulsory.conditions.description"><![CDATA[Werden keine Bedingungen ausgewählt, wird das Pflicht-Thema allen Benutzern angezeigt.]]></item>
+		<item name="wcf.acp.compulsory.content"><![CDATA[Text]]></item>
+		<item name="wcf.acp.compulsory.content.description"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Du kannst{else}Sie können{/if} den Platzhalter „[username]“ nutzen, um Benutzer direkt mit ihrem Namen anzusprechen.]]></item>
+		<item name="wcf.acp.compulsory.copy"><![CDATA[Thema kopieren]]></item>
+		<item name="wcf.acp.compulsory.copy.confirm"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} dieses Pflichtthema wirklich kopieren?]]></item>
+		<item name="wcf.acp.compulsory.delete.sure"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} dieses Pflicht-Thema wirklich löschen?]]></item>
+		<item name="wcf.acp.compulsory.display"><![CDATA[Inhalt]]></item>
+		<item name="wcf.acp.compulsory.display.description"><![CDATA[Titel und Text, die den Benutzern angezeigt werden.]]></item>
+		<item name="wcf.acp.compulsory.edit"><![CDATA[Thema bearbeiten]]></item>
+		<item name="wcf.acp.compulsory.general"><![CDATA[Allgemein]]></item>
+		<item name="wcf.acp.compulsory.general.description"><![CDATA[Allgemeine Einstellungen des Themas]]></item>
+		<item name="wcf.acp.compulsory.hasPeriod"><![CDATA[Zeitraum beschränken]]></item>
+		<item name="wcf.acp.compulsory.isDisabled"><![CDATA[Thema deaktivieren]]></item>
+		<item name="wcf.acp.compulsory.isDisabled.description"><![CDATA[Nach erstmaliger Aktivierung wirken sich Änderungen des Themas nur auf Benutzer aus, die noch nicht vom Pflicht-Thema erfasst wurden. Rückwirkende Änderungen sind nicht möglich.]]></item>
+		<item name="wcf.acp.compulsory.isDisabled.warning"><![CDATA[Das Thema war bereits aktiviert.<br>Änderungen des Themas wirken sich nur auf Benutzer aus, die noch nicht vom Pflicht-Thema erfasst wurden. Rückwirkende Änderungen sind nicht möglich.]]></item>
+		<item name="wcf.acp.compulsory.isRefusable"><![CDATA[Ablehnung erlauben]]></item>
+		<item name="wcf.acp.compulsory.isRefusable.description"><![CDATA[Benutzer dürfen ihre Zustimmung explizit verweigern.]]></item>
+		<item name="wcf.acp.compulsory.list"><![CDATA[Themen]]></item>
+		<item name="wcf.acp.compulsory.pages"><![CDATA[Seiten]]></item>
+		<item name="wcf.acp.compulsory.pages.description"><![CDATA[Das Pflichtthema wird nur auf den angegebenen Seiten angezeigt. {if LANGUAGE_USE_INFORMAL_VARIANT}Gebe{else}Geben Sie{/if} dazu die vollständige Seiten-URL ein, wie sie in der Community dargestellt wird; eine URL pro Zeile. „*“ kann als Platzhalter am Ende der URL genutzt werden. Dieses Feld frei lassen, um das Thema auf allen Seiten anzuzeigen.]]></item>
+		<item name="wcf.acp.compulsory.period"><![CDATA[Zeitraum]]></item>
+		<item name="wcf.acp.compulsory.period.description"><![CDATA[Themen werden für diesen Zeitraum automatisch aktiviert und deaktiviert.]]></item>
+		<item name="wcf.acp.compulsory.period.end"><![CDATA[von]]></item>
+		<item name="wcf.acp.compulsory.period.error.endBeforeStart"><![CDATA[Das Enddatum ist vor dem Startdatum.]]></item>
+		<item name="wcf.acp.compulsory.period.error.endInPast"><![CDATA[Das Enddatum ist in der Vergangenheit.]]></item>
+		<item name="wcf.acp.compulsory.period.error.invalidEnd"><![CDATA[Das Enddatum ist ungültig.]]></item>
+		<item name="wcf.acp.compulsory.period.error.invalidStart"><![CDATA[Das Startdatum ist ungültig.]]></item>
+		<item name="wcf.acp.compulsory.period.start"><![CDATA[bis]]></item>
+		<item name="wcf.acp.compulsory.statAccept"><![CDATA[Zustimmung]]></item>
+		<item name="wcf.acp.compulsory.statRefuse"><![CDATA[Ablehnung]]></item>
+		<item name="wcf.acp.compulsory.stats"><![CDATA[Statistik]]></item>
+		<item name="wcf.acp.compulsory.stats.accept"><![CDATA[Zustimmungen]]></item>
+		<item name="wcf.acp.compulsory.stats.accept.count"><![CDATA[{#$acceptCount}{if $acceptCountDeleted} + {#$acceptCountDeleted}{/if}]]></item>
+		<item name="wcf.acp.compulsory.stats.accept.deleted"><![CDATA[{#$acceptCountDeleted} Benutzer wurde{if $acceptCountDeleted != 1}n{/if} nach der Zustimmung gelöscht.]]></item>
+		<item name="wcf.acp.compulsory.stats.accept.last"><![CDATA[{#$acceptCount} {if $acceptCount == 1}aktueller Benutzer hat{else}aktuelle Benutzer haben{/if} bisher zugestimmt. Zuletzt:]]></item>
+		<item name="wcf.acp.compulsory.stats.none"><![CDATA[Keine aktuellen Benutzer.]]></item>
+		<item name="wcf.acp.compulsory.stats.refuse"><![CDATA[Ablehnungen]]></item>
+		<item name="wcf.acp.compulsory.stats.refuse.count"><![CDATA[{#$refuseCount}{if $refuseCountDeleted} + {#$refuseCountDeleted}{/if}]]></item>
+		<item name="wcf.acp.compulsory.stats.refuse.deleted"><![CDATA[{#$refuseCountDeleted} Benutzer wurde{if $refuseCountDeleted != 1}n{/if} nach der Ablehnung gelöscht.]]></item>
+		<item name="wcf.acp.compulsory.stats.refuse.last"><![CDATA[{#$refuseCount} {if $refuseCount == 1}aktueller Benutzer hat{else}aktuelle Benutzer haben{/if} bisher abgelehnt. Zuletzt:]]></item>
+		<item name="wcf.acp.compulsory.stats.remaining"><![CDATA[Übrige Benutzer]]></item>
+		<item name="wcf.acp.compulsory.stats.remaining.left"><![CDATA[{#$remainingCount} von aktuell {#$totalCount} Benutzer{if $totalCount != 1}n{/if} {if $remainingCount == 1}hat{else}haben{/if} noch nicht reagiert.]]></item>
+		<item name="wcf.acp.compulsory.stats.show.all"><![CDATA[Alle Benutzer anzeigen]]></item>
+		<item name="wcf.acp.compulsory.subject"><![CDATA[Titel]]></item>
+		<item name="wcf.acp.compulsory.subject.description"><![CDATA[Titel des Themas. Bis zu 255 Zeichen sind erlaubt.]]></item>
+		<item name="wcf.acp.compulsory.subject.error.tooLong"><![CDATA[Der Titel ist zu lang.]]></item>
+		<item name="wcf.acp.compulsory.time"><![CDATA[Zeit]]></item>
+		<item name="wcf.acp.compulsory.title"><![CDATA[Beschreibung]]></item>
+		<item name="wcf.acp.compulsory.title.description"><![CDATA[Kurze Beschreibung des Themas. Bis zu 80 Zeichen sind erlaubt.]]></item>
+		<item name="wcf.acp.compulsory.title.error.tooLong"><![CDATA[Die Beschreibung ist zu lang.]]></item>
+		<item name="wcf.acp.compulsory.username"><![CDATA[Benutzer]]></item>
+	</category>
+	
+	<category name="wcf.user.compulsory">
+		<item name="wcf.user.compulsory.ban.accept"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} dem Pflicht-Thema „{$subject}“ zugestimmt.]]></item>
+		<item name="wcf.user.compulsory.ban.refuse"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} das Pflicht-Thema „{$subject}“ abgelehnt.]]></item>
+		<item name="wcf.user.compulsory.button.accept"><![CDATA[Zustimmen]]></item>
+		<item name="wcf.user.compulsory.button.accept.sure"><![CDATA[{if $acceptConfirmAction != 'none'}Das Benutzerkonto wird {if $acceptConfirmAction == 'ban'}gesperrt.{elseif $acceptConfirmAction == 'enable'}aktiviert.{elseif $acceptConfirmAction == 'disable'}deaktiviert.{/if}{/if}{if $acceptConfirmGroup} Die Benutzergruppenzuweisungen werden geändert.{/if}{if $acceptConfirmBreak}<br>{/if}{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} wirklich zustimmen?]]></item>
+		<item name="wcf.user.compulsory.button.print"><![CDATA[Drucken]]></item>
+		<item name="wcf.user.compulsory.button.refuse"><![CDATA[Ablehnen]]></item>
+		<item name="wcf.user.compulsory.button.refuse.sure"><![CDATA[{if $refuseConfirmAction != 'none'}Das Benutzerkonto wird {if $refuseConfirmAction == 'ban'}gesperrt.{elseif $refuseConfirmAction == 'enable'}aktiviert.{elseif $refuseConfirmAction == 'disable'}deaktiviert.{/if}{/if}{if $refuseConfirmGroup} Die Benutzergruppenzuweisungen werden geändert.{/if}{if $refuseConfirmBreak}<br>{/if}{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} wirklich ablehnen?]]></item>
+		<item name="wcf.user.compulsory.topic"><![CDATA[Pflicht-Thema]]></item>
+	</category>
+</language>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/page.xsd">
+	<import>
+		<page identifier="com.uz.wcf.compulsory.form">
+			<pageType>system</pageType>
+			<controller>wcf\form\CompulsoryForm</controller>
+			<handler>wcf\system\page\handler\CompulsoryFormHandler</handler>
+			
+			<name language="de">Pflicht-Thema</name>
+			<name language="en">Compulsory Topic</name>
+			<options>module_compulsory</options>
+			
+			<content language="en">
+				<title>Compulsory Topic</title>
+			</content>
+			<content language="de">
+				<title>Pflicht-Thema</title>
+			</content>
+		</page>
+	</import>
+</data>
