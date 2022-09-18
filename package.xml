@@ -1,81 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package name="com.uz.wcf.compulsory" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/package.xsd">
-	<packageinformation>
-		<packagename>Compulsory Topic</packagename>
-		<packagedescription>Forces your users to read and acknowledge your important topics before continuing to use your community.</packagedescription>
-		<packagename language="de">Pflicht-Thema</packagename>
-		<packagedescription language="de">Veranlasst Ihre Benutzer, wichtige Themen zu lesen und zu bestätigen, bevor sie die Community weiterhin nutzen können.</packagedescription>
-		<version>5.5.2</version>
-		<date>2022-09-08</date>
-	</packageinformation>
-	
-	<authorinformation>
-		<author><![CDATA[Darkwood.Design]]></author>
-		<authorurl><![CDATA[https://darkwood.design/]]></authorurl>
-	</authorinformation>
-	
-	<requiredpackages>
-		<requiredpackage minversion="5.3.0">com.woltlab.wcf</requiredpackage>
-	</requiredpackages>
-	
-	<excludedpackages>
-		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
-	</excludedpackages>
-	
-	<optionalpackages>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.blog.tar">com.uz.wcf.compulsory.blog</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.calendar.tar">com.uz.wcf.compulsory.calendar</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.filebase.tar">com.uz.wcf.compulsory.filebase</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.gallery.tar">com.uz.wcf.compulsory.gallery</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.wbb.tar">com.uz.wcf.compulsory.wbb</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.poi.tar">com.uz.wcf.compulsory.poi</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.show.tar">com.uz.wcf.compulsory.show</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.lexicon.tar">com.uz.wcf.compulsory.lexicon</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.marketplace.tar">com.uz.wcf.compulsory.marketplace</optionalpackage>
-		<optionalpackage file="optionals/com.uz.wcf.compulsory.webdisk.tar">com.uz.wcf.compulsory.webdisk</optionalpackage>
-	</optionalpackages>
-	
-	<instructions type="install">
-		<instruction type="acpMenu">acpMenu.xml</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="eventListener">eventListener.xml</instruction>
-		<instruction type="file">files.tar</instruction>
-		<instruction type="cronjob">cronjob.xml</instruction>
-		<instruction type="template">templates.tar</instruction>
-		<instruction type="language">language/*.xml</instruction>
-		<instruction type="objectTypeDefinition">objectTypeDefinition.xml</instruction>
-		<instruction type="objectType">objectType.xml</instruction>
-		<instruction type="page">page.xml</instruction>
-		<instruction type="menuItem">menuItem.xml</instruction>
-		<instruction type="option">option.xml</instruction>
-		<instruction type="sql">install.sql</instruction>
-		<instruction type="userGroupOption">userGroupOption.xml</instruction>
-		<instruction type="coreObject">coreObject.xml</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="5.2.3">
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="template">templates.tar</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="5.3.*">
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="template">templates.tar</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="5.4.*">
-		<instruction type="file">files.tar</instruction>
-		<instruction type="acpTemplate">acptemplates.tar</instruction>
-		<instruction type="template">templates.tar</instruction>
-	</instructions>
-	
-	<instructions type="update" fromversion="5.5.0">
-		<instruction type="file">files.tar</instruction>
-	</instructions>
+<package name="de.softcreatr.wcf.compulsory" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com https://www.woltlab.com/XSD/2019/package.xsd">
+    <packageinformation>
+        <packagename>Compulsory Topic</packagename>
+        <packagedescription>Forces your users to read and acknowledge your important topics before continuing to use your community.</packagedescription>
+        <packagename language="de">Pflicht-Thema</packagename>
+        <packagedescription language="de">Veranlasst Ihre Benutzer, wichtige Themen zu lesen und zu bestätigen, bevor sie die Community weiterhin nutzen können.</packagedescription>
+        <version>5.5.3</version>
+        <date>2022-09-18</date>
+    </packageinformation>
 
-	<instructions type="update" fromversion="5.5.1">
-		<instruction type="file">files.tar</instruction>
-	</instructions>
+    <authorinformation>
+        <author><![CDATA[SoftCreatR.dev]]></author>
+        <authorurl><![CDATA[https://softcreatr.dev]]></authorurl>
+    </authorinformation>
+
+    <requiredpackages>
+        <requiredpackage minversion="5.3.0">com.woltlab.wcf</requiredpackage>
+    </requiredpackages>
+
+    <excludedpackages>
+        <excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+        <excludedpackage version="*">com.uz.wcf.compulsory</excludedpackage>
+    </excludedpackages>
+
+    <optionalpackages>
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.blog.tar.gz">de.softcreatr.wcf.compulsory.blog</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.calendar.tar.gz">de.softcreatr.wcf.compulsory.calendar</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.filebase.tar.gz">de.softcreatr.wcf.compulsory.filebase</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.gallery.tar.gz">de.softcreatr.wcf.compulsory.gallery</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.wbb.tar.gz">de.softcreatr.wcf.compulsory.wbb</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.poi.tar.gz">de.softcreatr.wcf.compulsory.poi</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.show.tar.gz">de.softcreatr.wcf.compulsory.show</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.lexicon.tar.gz">de.softcreatr.wcf.compulsory.lexicon</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.marketplace.tar.gz">de.softcreatr.wcf.compulsory.marketplace</optionalpackage> -->
+        <!-- <optionalpackage file="optionals/de.softcreatr.wcf.compulsory.webdisk.tar.gz">de.softcreatr.wcf.compulsory.webdisk</optionalpackage> -->
+    </optionalpackages>
+
+    <instructions type="install">
+        <instruction type="acpMenu" />
+        <instruction type="acpTemplate" />
+        <instruction type="eventListener" />
+        <instruction type="file" />
+        <instruction type="cronjob" />
+        <instruction type="template" />
+        <instruction type="language" />
+        <instruction type="objectTypeDefinition" />
+        <instruction type="objectType" />
+        <instruction type="page" />
+        <instruction type="menuItem" />
+        <instruction type="option" />
+        <instruction type="sql">install.sql</instruction>
+        <instruction type="userGroupOption" />
+        <instruction type="coreObject" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.2.3">
+        <instruction type="file" />
+        <instruction type="acpTemplate" />
+        <instruction type="template" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.3.*">
+        <instruction type="file" />
+        <instruction type="acpTemplate" />
+        <instruction type="template" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.4.*">
+        <instruction type="file" />
+        <instruction type="acpTemplate" />
+        <instruction type="template" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.5.0">
+        <instruction type="file" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.5.1">
+        <instruction type="file" />
+    </instructions>
+
+    <instructions type="update" fromversion="5.5.2">
+        <instruction type="acpMenu" />
+        <instruction type="acpTemplate" />
+        <instruction type="eventListener" />
+        <instruction type="file" />
+        <instruction type="cronjob" />
+        <instruction type="template" />
+        <instruction type="language" />
+        <instruction type="objectTypeDefinition" />
+        <instruction type="objectType" />
+        <instruction type="page" />
+        <instruction type="menuItem" />
+        <instruction type="option" />
+        <instruction type="userGroupOption" />
+        <instruction type="coreObject" />
+    </instructions>
 </package>

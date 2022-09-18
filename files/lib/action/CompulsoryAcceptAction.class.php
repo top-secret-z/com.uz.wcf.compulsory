@@ -1,13 +1,33 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\action;
 
 use wcf\data\compulsory\Compulsory;
 use wcf\data\compulsory\CompulsoryEditor;
 use wcf\data\compulsory\content\CompulsoryContent;
 use wcf\data\page\PageCache;
-use wcf\data\user\UserAction;
 use wcf\data\user\group\UserGroup;
+use wcf\data\user\UserAction;
 use wcf\system\user\storage\UserStorageHandler;
 use wcf\system\WCF;
 use wcf\util\HeaderUtil;
@@ -15,10 +35,6 @@ use wcf\util\StringUtil;
 
 /**
  * Allows the user to accept a compulsory.
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class CompulsoryAcceptAction extends AbstractSecureAction
 {
@@ -40,7 +56,7 @@ class CompulsoryAcceptAction extends AbstractSecureAction
         parent::readParameters();
 
         if (isset($_GET['id'])) {
-            $compulsoryID = intval($_GET['id']);
+            $compulsoryID = \intval($_GET['id']);
         }
         $this->compulsory = new Compulsory($compulsoryID);
         if (!$this->compulsory->compulsoryID) {
@@ -60,9 +76,9 @@ class CompulsoryAcceptAction extends AbstractSecureAction
         $user = WCF::getUser();
 
         // update log
-        $sql = "INSERT INTO	wcf" . WCF_N . "_compulsory_dismissed
-					(compulsoryID, choice, time, userID, username)
-				VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO    wcf" . WCF_N . "_compulsory_dismissed
+                    (compulsoryID, choice, time, userID, username)
+                VALUES (?, ?, ?, ?, ?)";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute([$this->compulsory->compulsoryID, 'accept', TIME_NOW, $user->userID, $user->username]);
 
@@ -80,8 +96,8 @@ class CompulsoryAcceptAction extends AbstractSecureAction
                 $userAction = new UserAction([$user], 'ban', [
                     'banExpires' => 0,
                     'banReason' => $language->getDynamicVariable('wcf.user.compulsory.ban.accept', [
-                        'subject' => $content->subject
-                    ])
+                        'subject' => $content->subject,
+                    ]),
                 ]);
                 $userAction->executeAction();
                 break;
@@ -97,19 +113,19 @@ class CompulsoryAcceptAction extends AbstractSecureAction
 
         // change groups if configured, no admin group operation allowed
         $groupIDs = $this->getAllowedGroupIDs($this->compulsory->acceptAddGroupIDs);
-        if (count($groupIDs)) {
+        if (\count($groupIDs)) {
             $action = new UserAction([$user->userID], 'addToGroups', [
                 'groups' => $groupIDs,
                 'deleteOldGroups' => false,
-                'addDefaultGroups' => false
+                'addDefaultGroups' => false,
             ]);
             $action->executeAction();
         }
 
         $groupIDs = $this->getAllowedGroupIDs($this->compulsory->acceptRemoveGroupIDs);
-        if (count($groupIDs)) {
+        if (\count($groupIDs)) {
             $action = new UserAction([$user->userID], 'removeFromGroups', [
-                'groups' => $groupIDs
+                'groups' => $groupIDs,
             ]);
             $action->executeAction();
         }
@@ -134,7 +150,7 @@ class CompulsoryAcceptAction extends AbstractSecureAction
      */
     public function getAllowedGroupIDs($groupIDs)
     {
-        $groupIDs = unserialize($groupIDs);
+        $groupIDs = \unserialize($groupIDs);
         if (empty($groupIDs)) {
             return [];
         }
@@ -146,6 +162,6 @@ class CompulsoryAcceptAction extends AbstractSecureAction
             }
         }
 
-        return array_intersect($groupIDs, $allowedUserGroupIDs);
+        return \array_intersect($groupIDs, $allowedUserGroupIDs);
     }
 }

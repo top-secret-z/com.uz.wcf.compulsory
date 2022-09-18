@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/option.xsd">
-	<import>
-		<categories>
-			<category name="user.compulsory">
-				<parent>user</parent>
-				<showorder>5</showorder>
-			</category>
-		</categories>
-		
-		<options>
-			<option name="module_compulsory">
-				<categoryname>module.user</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-			</option>
-			
-			<option name="user_compulsory_exceptions">
-				<categoryname>user.compulsory</categoryname>
-				<optiontype>textarea</optiontype>
-			</option>
-			<option name="user_compulsory_url">
-				<categoryname>user.compulsory</categoryname>
-				<optiontype>text</optiontype>
-			</option>
-			<option name="user_compulsory_print">
-				<categoryname>user.compulsory</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-			</option>
-			<option name="user_compulsory_defaultTitle">
-				<categoryname>user.compulsory</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-			</option>
-			<option name="user_compulsory_stats_old">
-				<categoryname>user.compulsory</categoryname>
-				<optiontype>boolean</optiontype>
-				<defaultvalue>0</defaultvalue>
-			</option>
-		</options>
-	</import>
+    <import>
+        <categories>
+            <category name="user.compulsory">
+                <parent>user</parent>
+                <showorder>5</showorder>
+            </category>
+        </categories>
+
+        <options>
+            <option name="module_compulsory">
+                <categoryname>module.user</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+            </option>
+
+            <option name="user_compulsory_exceptions">
+                <categoryname>user.compulsory</categoryname>
+                <optiontype>textarea</optiontype>
+            </option>
+            <option name="user_compulsory_url">
+                <categoryname>user.compulsory</categoryname>
+                <optiontype>text</optiontype>
+            </option>
+            <option name="user_compulsory_print">
+                <categoryname>user.compulsory</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+            </option>
+            <option name="user_compulsory_defaultTitle">
+                <categoryname>user.compulsory</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>1</defaultvalue>
+            </option>
+            <option name="user_compulsory_stats_old">
+                <categoryname>user.compulsory</categoryname>
+                <optiontype>boolean</optiontype>
+                <defaultvalue>0</defaultvalue>
+            </option>
+        </options>
+    </import>
 </data>

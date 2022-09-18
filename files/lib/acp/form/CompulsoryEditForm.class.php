@@ -1,5 +1,25 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\acp\form;
 
 use wcf\data\compulsory\Compulsory;
@@ -18,10 +38,6 @@ use wcf\util\DateUtil;
 
 /**
  * Shows the compulsory edit form.
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class CompulsoryEditForm extends CompulsoryAddForm
 {
@@ -34,7 +50,9 @@ class CompulsoryEditForm extends CompulsoryAddForm
      * Compulsory data
      */
     public $compulsoryID = 0;
-    public $compulsory = null;
+
+    public $compulsory;
+
     public $compulsoryIDs = [];
 
     /**
@@ -45,7 +63,7 @@ class CompulsoryEditForm extends CompulsoryAddForm
         parent::readParameters();
 
         if (isset($_REQUEST['id'])) {
-            $this->compulsoryID = intval($_REQUEST['id']);
+            $this->compulsoryID = \intval($_REQUEST['id']);
         }
         $this->compulsory = new Compulsory($this->compulsoryID);
         if (!$this->compulsory->compulsoryID) {
@@ -82,12 +100,12 @@ class CompulsoryEditForm extends CompulsoryAddForm
             $this->isDisabled = $this->compulsory->isDisabled;
             $this->isRefusable = $this->compulsory->isRefusable;
 
-            $this->acceptAddGroupIDs = unserialize($this->compulsory->acceptAddGroupIDs);
-            $this->acceptRemoveGroupIDs = unserialize($this->compulsory->acceptRemoveGroupIDs);
+            $this->acceptAddGroupIDs = \unserialize($this->compulsory->acceptAddGroupIDs);
+            $this->acceptRemoveGroupIDs = \unserialize($this->compulsory->acceptRemoveGroupIDs);
             $this->acceptUserAction = $this->compulsory->acceptUserAction;
             $this->acceptUrl = $this->compulsory->acceptUrl;
-            $this->refuseAddGroupIDs = unserialize($this->compulsory->refuseAddGroupIDs);
-            $this->refuseRemoveGroupIDs = unserialize($this->compulsory->refuseRemoveGroupIDs);
+            $this->refuseAddGroupIDs = \unserialize($this->compulsory->refuseAddGroupIDs);
+            $this->refuseRemoveGroupIDs = \unserialize($this->compulsory->refuseRemoveGroupIDs);
             $this->refuseUserAction = $this->compulsory->refuseUserAction;
             $this->refuseUrl = $this->compulsory->refuseUrl;
             $this->pages = $this->compulsory->pages;
@@ -129,10 +147,10 @@ class CompulsoryEditForm extends CompulsoryAddForm
         I18nHandler::getInstance()->assignVariables(!empty($_POST));
 
         WCF::getTPL()->assign([
-                                  'action' => 'edit',
-                                  'compulsory' => $this->compulsory,
-                                  'compulsoryID' => $this->compulsory->compulsoryID
-                              ]);
+            'action' => 'edit',
+            'compulsory' => $this->compulsory,
+            'compulsoryID' => $this->compulsory->compulsoryID,
+        ]);
     }
 
     /**
@@ -156,14 +174,14 @@ class CompulsoryEditForm extends CompulsoryAddForm
                 $content[$language->languageID] = [
                     'subject' => !empty($this->subject[$language->languageID]) ? $this->subject[$language->languageID] : '',
                     'content' => !empty($this->content[$language->languageID]) ? $this->content[$language->languageID] : '',
-                    'htmlInputProcessor' => isset($this->htmlInputProcessors[$language->languageID]) ? $this->htmlInputProcessors[$language->languageID] : null
+                    'htmlInputProcessor' => $this->htmlInputProcessors[$language->languageID] ?? null,
                 ];
             }
         } else {
             $content[0] = [
                 'subject' => !empty($this->subject[0]) ? $this->subject[0] : '',
                 'content' => !empty($this->content[0]) ? $this->content[0] : '',
-                'htmlInputProcessor' => isset($this->htmlInputProcessors[0]) ? $this->htmlInputProcessors[0] : null
+                'htmlInputProcessor' => $this->htmlInputProcessors[0] ?? null,
             ];
         }
 
@@ -177,19 +195,19 @@ class CompulsoryEditForm extends CompulsoryAddForm
             'userID' => WCF::getUser()->userID,
             'username' => WCF::getUser()->username,
 
-            'acceptAddGroupIDs' => serialize($this->acceptAddGroupIDs),
-            'acceptRemoveGroupIDs' => serialize($this->acceptRemoveGroupIDs),
+            'acceptAddGroupIDs' => \serialize($this->acceptAddGroupIDs),
+            'acceptRemoveGroupIDs' => \serialize($this->acceptRemoveGroupIDs),
             'acceptUserAction' => $this->acceptUserAction,
             'acceptUrl' => $this->acceptUrl,
-            'refuseAddGroupIDs' => serialize($this->refuseAddGroupIDs),
-            'refuseRemoveGroupIDs' => serialize($this->refuseRemoveGroupIDs),
+            'refuseAddGroupIDs' => \serialize($this->refuseAddGroupIDs),
+            'refuseRemoveGroupIDs' => \serialize($this->refuseRemoveGroupIDs),
             'refuseUserAction' => $this->refuseUserAction,
             'refuseUrl' => $this->refuseUrl,
             'pages' => $this->pages,
 
             'hasPeriod' => $this->hasPeriod,
             'periodEnd' => $this->hasPeriod ? $this->periodEndObj->getTimestamp() : 0,
-            'periodStart' => $this->hasPeriod ? $this->periodStartObj->getTimestamp() : 0
+            'periodStart' => $this->hasPeriod ? $this->periodStartObj->getTimestamp() : 0,
         ];
 
         // activation
@@ -197,7 +215,7 @@ class CompulsoryEditForm extends CompulsoryAddForm
             $data['activationTime'] = TIME_NOW;
         }
 
-        $this->objectAction = new CompulsoryAction([$this->compulsory], 'update', ['data' => array_merge($this->additionalFields, $data), 'content' => $content]);
+        $this->objectAction = new CompulsoryAction([$this->compulsory], 'update', ['data' => \array_merge($this->additionalFields, $data), 'content' => $content]);
         $this->objectAction->executeAction();
 
         $compulsoryEditor = new CompulsoryEditor(new Compulsory($this->compulsory->compulsoryID));
@@ -205,7 +223,7 @@ class CompulsoryEditForm extends CompulsoryAddForm
         // transform conditions array into one-dimensional array
         $conditions = [];
         foreach ($this->conditions as $groupedObjectTypes) {
-            $conditions = array_merge($conditions, $groupedObjectTypes);
+            $conditions = \array_merge($conditions, $groupedObjectTypes);
         }
 
         ConditionHandler::getInstance()->updateConditions($this->compulsory->compulsoryID, $this->compulsory->getConditions(), $conditions);
