@@ -7,6 +7,7 @@
         <packagedescription language="de">Veranlasst Ihre Benutzer, wichtige Themen zu lesen und zu bestätigen, bevor sie die Community weiterhin nutzen können.</packagedescription>
         <version>5.5.3</version>
         <date>2022-09-18</date>
+        <license><![CDATA[LGPL <https://opensource.org/licenses/lgpl-license.php>]]></license>
     </packageinformation>
 
     <authorinformation>
