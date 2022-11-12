@@ -1,11 +1,31 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\acp\form;
 
+use DateTime;
 use wcf\data\compulsory\CompulsoryAction;
 use wcf\data\compulsory\CompulsoryEditor;
 use wcf\data\language\Language;
-use wcf\data\object\type\ObjectType;
 use wcf\data\object\type\ObjectTypeCache;
 use wcf\data\package\PackageCache;
 use wcf\data\user\group\UserGroup;
@@ -22,10 +42,6 @@ use wcf\util\StringUtil;
 
 /**
  * Shows the compulsory add form.
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class CompulsoryAddForm extends AbstractForm
 {
@@ -48,22 +64,37 @@ class CompulsoryAddForm extends AbstractForm
      * compulsory and related data
      */
     public $content = [];
+
     public $activationTime = 0;
+
     public $addNewUser = 1;
+
     public $hasPeriod = 0;
+
     public $isDisabled = 1;
+
     public $isRefusable = 0;
+
     public $subject = [];
+
     public $title = '';
 
     public $acceptAddGroupIDs = [];
+
     public $acceptRemoveGroupIDs = [];
+
     public $acceptUserAction = 'none';
+
     public $acceptUrl = '';
+
     public $refuseAddGroupIDs = [];
+
     public $refuseRemoveGroupIDs = [];
+
     public $refuseUserAction = 'none';
+
     public $refuseUrl = '';
+
     public $pages = '';
 
     /**
@@ -71,8 +102,11 @@ class CompulsoryAddForm extends AbstractForm
      * @var    string / dateTime
      */
     public $periodEnd = '';
+
     public $periodEndObj;
+
     public $periodStart = '';
+
     public $periodStartObj;
 
     /**
@@ -140,7 +174,7 @@ class CompulsoryAddForm extends AbstractForm
 
         // get available languages
         $this->availableLanguages = LanguageFactory::getInstance()->getLanguages();
-        if (count($this->availableLanguages)) {
+        if (\count($this->availableLanguages)) {
             $this->isMultilingual = 1;
         }
 
@@ -158,33 +192,33 @@ class CompulsoryAddForm extends AbstractForm
         I18nHandler::getInstance()->assignVariables();
 
         WCF::getTPL()->assign([
-                                  'action' => 'add',
-                                  'availableLanguages' => $this->availableLanguages,
-                                  'groups' => $this->groups,
-                                  'groupedObjectTypes' => $this->conditions,
+            'action' => 'add',
+            'availableLanguages' => $this->availableLanguages,
+            'groups' => $this->groups,
+            'groupedObjectTypes' => $this->conditions,
 
-                                  'activationTime' => $this->activationTime,
-                                  'addNewUser' => $this->addNewUser,
-                                  'content' => $this->content,
-                                  'isDisabled' => $this->isDisabled,
-                                  'isMultilingual' => $this->isMultilingual,
-                                  'isRefusable' => $this->isRefusable,
-                                  'subject' => $this->subject,
+            'activationTime' => $this->activationTime,
+            'addNewUser' => $this->addNewUser,
+            'content' => $this->content,
+            'isDisabled' => $this->isDisabled,
+            'isMultilingual' => $this->isMultilingual,
+            'isRefusable' => $this->isRefusable,
+            'subject' => $this->subject,
 
-                                  'hasPeriod' => $this->hasPeriod,
-                                  'periodEnd' => $this->periodEnd,
-                                  'periodStart' => $this->periodStart,
+            'hasPeriod' => $this->hasPeriod,
+            'periodEnd' => $this->periodEnd,
+            'periodStart' => $this->periodStart,
 
-                                  'acceptAddGroupIDs' => $this->acceptAddGroupIDs,
-                                  'acceptRemoveGroupIDs' => $this->acceptRemoveGroupIDs,
-                                  'acceptUserAction' => $this->acceptUserAction,
-                                  'acceptUrl' => $this->acceptUrl,
-                                  'refuseAddGroupIDs' => $this->refuseAddGroupIDs,
-                                  'refuseRemoveGroupIDs' => $this->refuseRemoveGroupIDs,
-                                  'refuseUserAction' => $this->refuseUserAction,
-                                  'refuseUrl' => $this->refuseUrl,
-                                  'pages' => $this->pages
-                              ]);
+            'acceptAddGroupIDs' => $this->acceptAddGroupIDs,
+            'acceptRemoveGroupIDs' => $this->acceptRemoveGroupIDs,
+            'acceptUserAction' => $this->acceptUserAction,
+            'acceptUrl' => $this->acceptUrl,
+            'refuseAddGroupIDs' => $this->refuseAddGroupIDs,
+            'refuseRemoveGroupIDs' => $this->refuseRemoveGroupIDs,
+            'refuseUserAction' => $this->refuseUserAction,
+            'refuseUrl' => $this->refuseUrl,
+            'pages' => $this->pages,
+        ]);
     }
 
     /**
@@ -213,17 +247,17 @@ class CompulsoryAddForm extends AbstractForm
         if (isset($_POST['isRefusable'])) {
             $this->isRefusable = 1;
         }
-        if (isset($_POST['content']) && is_array($_POST['content'])) {
+        if (isset($_POST['content']) && \is_array($_POST['content'])) {
             $this->content = ArrayUtil::trim($_POST['content']);
         }
-        if (isset($_POST['subject']) && is_array($_POST['subject'])) {
+        if (isset($_POST['subject']) && \is_array($_POST['subject'])) {
             $this->subject = ArrayUtil::trim($_POST['subject']);
         }
 
-        if (isset($_POST['acceptAddGroupIDs']) && is_array($_POST['acceptAddGroupIDs'])) {
+        if (isset($_POST['acceptAddGroupIDs']) && \is_array($_POST['acceptAddGroupIDs'])) {
             $this->acceptAddGroupIDs = ArrayUtil::toIntegerArray($_POST['acceptAddGroupIDs']);
         }
-        if (isset($_POST['acceptRemoveGroupIDs']) && is_array($_POST['acceptRemoveGroupIDs'])) {
+        if (isset($_POST['acceptRemoveGroupIDs']) && \is_array($_POST['acceptRemoveGroupIDs'])) {
             $this->acceptRemoveGroupIDs = ArrayUtil::toIntegerArray($_POST['acceptRemoveGroupIDs']);
         }
         if (!empty($_POST['acceptUserAction'])) {
@@ -232,10 +266,10 @@ class CompulsoryAddForm extends AbstractForm
         if (!empty($_POST['acceptUrl'])) {
             $this->acceptUrl = StringUtil::trim($_POST['acceptUrl']);
         }
-        if (isset($_POST['refuseAddGroupIDs']) && is_array($_POST['refuseAddGroupIDs'])) {
+        if (isset($_POST['refuseAddGroupIDs']) && \is_array($_POST['refuseAddGroupIDs'])) {
             $this->refuseAddGroupIDs = ArrayUtil::toIntegerArray($_POST['refuseAddGroupIDs']);
         }
-        if (isset($_POST['refuseRemoveGroupIDs']) && is_array($_POST['refuseRemoveGroupIDs'])) {
+        if (isset($_POST['refuseRemoveGroupIDs']) && \is_array($_POST['refuseRemoveGroupIDs'])) {
             $this->refuseRemoveGroupIDs = ArrayUtil::toIntegerArray($_POST['refuseRemoveGroupIDs']);
         }
         if (!empty($_POST['refuseUserAction'])) {
@@ -250,11 +284,11 @@ class CompulsoryAddForm extends AbstractForm
 
         if ($this->hasPeriod && isset($_POST['periodStart'])) {
             $this->periodStart = $_POST['periodStart'];
-            $this->periodStartObj = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $this->periodStart);
+            $this->periodStartObj = DateTime::createFromFormat('Y-m-d\TH:i:sP', $this->periodStart);
         }
         if ($this->hasPeriod && isset($_POST['periodEnd'])) {
             $this->periodEnd = $_POST['periodEnd'];
-            $this->periodEndObj = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $this->periodEnd);
+            $this->periodEndObj = DateTime::createFromFormat('Y-m-d\TH:i:sP', $this->periodEnd);
         }
 
         // conditions
@@ -278,14 +312,14 @@ class CompulsoryAddForm extends AbstractForm
                 $content[$language->languageID] = [
                     'subject' => !empty($this->subject[$language->languageID]) ? $this->subject[$language->languageID] : '',
                     'content' => !empty($this->content[$language->languageID]) ? $this->content[$language->languageID] : '',
-                    'htmlInputProcessor' => isset($this->htmlInputProcessors[$language->languageID]) ? $this->htmlInputProcessors[$language->languageID] : null
+                    'htmlInputProcessor' => $this->htmlInputProcessors[$language->languageID] ?? null,
                 ];
             }
         } else {
             $content[0] = [
                 'subject' => !empty($this->subject[0]) ? $this->subject[0] : '',
                 'content' => !empty($this->content[0]) ? $this->content[0] : '',
-                'htmlInputProcessor' => isset($this->htmlInputProcessors[0]) ? $this->htmlInputProcessors[0] : null
+                'htmlInputProcessor' => $this->htmlInputProcessors[0] ?? null,
             ];
         }
 
@@ -300,23 +334,23 @@ class CompulsoryAddForm extends AbstractForm
             'userID' => WCF::getUser()->userID,
             'username' => WCF::getUser()->username,
 
-            'acceptAddGroupIDs' => serialize($this->acceptAddGroupIDs),
-            'acceptRemoveGroupIDs' => serialize($this->acceptRemoveGroupIDs),
+            'acceptAddGroupIDs' => \serialize($this->acceptAddGroupIDs),
+            'acceptRemoveGroupIDs' => \serialize($this->acceptRemoveGroupIDs),
             'acceptUserAction' => $this->acceptUserAction,
             'acceptUrl' => $this->acceptUrl,
-            'refuseAddGroupIDs' => serialize($this->refuseAddGroupIDs),
-            'refuseRemoveGroupIDs' => serialize($this->refuseRemoveGroupIDs),
+            'refuseAddGroupIDs' => \serialize($this->refuseAddGroupIDs),
+            'refuseRemoveGroupIDs' => \serialize($this->refuseRemoveGroupIDs),
             'refuseUserAction' => $this->refuseUserAction,
             'refuseUrl' => $this->refuseUrl,
             'pages' => $this->pages,
 
             'hasPeriod' => $this->hasPeriod,
             'periodEnd' => $this->hasPeriod ? $this->periodEndObj->getTimestamp() : 0,
-            'periodStart' => $this->hasPeriod ? $this->periodStartObj->getTimestamp() : 0
+            'periodStart' => $this->hasPeriod ? $this->periodStartObj->getTimestamp() : 0,
         ];
 
         $this->objectAction = new CompulsoryAction([], 'create', [
-            'data' => array_merge($this->additionalFields, $data),
+            'data' => \array_merge($this->additionalFields, $data),
             'content' => $content,
         ]);
         $returnValues = $this->objectAction->executeAction();
@@ -332,14 +366,14 @@ class CompulsoryAddForm extends AbstractForm
                 PackageCache::getInstance()->getPackageID('com.uz.wcf.compulsory')
             );
             $compulsoryEditor->update([
-                                          'title' => 'wcf.acp.compulsory.title' . $compulsoryID
-                                      ]);
+                'title' => 'wcf.acp.compulsory.title' . $compulsoryID,
+            ]);
         }
 
         // transform conditions array into one-dimensional array
         $conditions = [];
         foreach ($this->conditions as $groupedObjectTypes) {
-            $conditions = array_merge($conditions, $groupedObjectTypes);
+            $conditions = \array_merge($conditions, $groupedObjectTypes);
         }
 
         ConditionHandler::getInstance()->createConditions($returnValues['returnValues']->compulsoryID, $conditions);
@@ -401,7 +435,7 @@ class CompulsoryAddForm extends AbstractForm
                 throw new UserInputException('title', 'multilingual');
             }
         }
-        if (mb_strlen($this->title) > 80) {
+        if (\mb_strlen($this->title) > 80) {
             throw new UserInputException('title', 'tooLong');
         }
 
@@ -445,16 +479,16 @@ class CompulsoryAddForm extends AbstractForm
         // period
         if ($this->hasPeriod) {
             $periodEnd = $periodStart = null;
-            if (strlen($this->periodStart)) {
-                $periodStart = @strtotime($this->periodStart);
+            if (\strlen($this->periodStart)) {
+                $periodStart = @\strtotime($this->periodStart);
                 if ($periodStart === false) {
                     throw new UserInputException('period', 'invalidStart');
                 }
             } else {
                 throw new UserInputException('period', 'invalidStart');
             }
-            if (strlen($this->periodEnd)) {
-                $periodEnd = @strtotime($this->periodEnd);
+            if (\strlen($this->periodEnd)) {
+                $periodEnd = @\strtotime($this->periodEnd);
                 if ($periodEnd === false) {
                     throw new UserInputException('period', 'invalidEnd');
                 }
@@ -477,26 +511,26 @@ class CompulsoryAddForm extends AbstractForm
             $allowedGroupIDs[] = $group->groupID;
         }
 
-        if (count($this->acceptAddGroupIDs)) {
-            if (count(array_diff($this->acceptAddGroupIDs, $allowedGroupIDs))) {
+        if (\count($this->acceptAddGroupIDs)) {
+            if (\count(\array_diff($this->acceptAddGroupIDs, $allowedGroupIDs))) {
                 throw new UserInputException('acceptAddGroupIDs', 'invalidGroup');
             }
         }
 
-        if (count($this->acceptRemoveGroupIDs)) {
-            if (count(array_diff($this->acceptRemoveGroupIDs, $allowedGroupIDs))) {
+        if (\count($this->acceptRemoveGroupIDs)) {
+            if (\count(\array_diff($this->acceptRemoveGroupIDs, $allowedGroupIDs))) {
                 throw new UserInputException('acceptRemoveGroupIDs', 'invalidGroup');
             }
         }
 
-        if (count($this->refuseAddGroupIDs)) {
-            if (count(array_diff($this->refuseAddGroupIDs, $allowedGroupIDs))) {
+        if (\count($this->refuseAddGroupIDs)) {
+            if (\count(\array_diff($this->refuseAddGroupIDs, $allowedGroupIDs))) {
                 throw new UserInputException('refuseAddGroupIDs', 'invalidGroup');
             }
         }
 
-        if (count($this->refuseRemoveGroupIDs)) {
-            if (count(array_diff($this->refuseRemoveGroupIDs, $allowedGroupIDs))) {
+        if (\count($this->refuseRemoveGroupIDs)) {
+            if (\count(\array_diff($this->refuseRemoveGroupIDs, $allowedGroupIDs))) {
                 throw new UserInputException('refuseRemoveGroupIDs', 'invalidGroup');
             }
         }

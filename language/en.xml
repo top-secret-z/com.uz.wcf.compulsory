@@ -1,118 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/language.xsd" languagecode="en" languagename="English" countrycode="gb">
-	<!-- Options -->
-	<category name="wcf.acp.option">
-		<item name="wcf.acp.option.module_compulsory"><![CDATA[Compulsory Topic]]></item>
-		<item name="wcf.acp.option.category.user.compulsory"><![CDATA[Compulsory Topic]]></item>
-		<item name="wcf.acp.option.user_compulsory_defaultTitle"><![CDATA[Default Page Title]]></item>
-		<item name="wcf.acp.option.user_compulsory_defaultTitle.description"><![CDATA[Selecting “No” will display the compulsory title as page title.]]></item>
-		<item name="wcf.acp.option.user_compulsory_exceptions"><![CDATA[Exceptions]]></item>
-		<item name="wcf.acp.option.user_compulsory_exceptions.description"><![CDATA[ID of pages to be shown despite a compulsory topic. One ID per line. The page ID can be found in ACP via Content - Pages.]]></item>
-		<item name="wcf.acp.option.user_compulsory_print"><![CDATA[Print]]></item>
-		<item name="wcf.acp.option.user_compulsory_print.description"><![CDATA[Shows or hides a Print button on the coumpulsory page.]]></item>
-		<item name="wcf.acp.option.user_compulsory_stats_old"><![CDATA[Old Statistics]]></item>
-		<item name="wcf.acp.option.user_compulsory_stats_old.description"><![CDATA[Switches between old and new statistics view.]]></item>
-		<item name="wcf.acp.option.user_compulsory_url"><![CDATA[Redirection]]></item>
-		<item name="wcf.acp.option.user_compulsory_url.description"><![CDATA[Users will be redirected to the given URL after acknowledgement of compulsory topics. If this field is left empty, they will be redirected to the community's main page.]]></item>
-	</category>
-	
-	<!-- Group Permission -->
-	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.option.category.admin.user.compulsory"><![CDATA[Compulsory Topic]]></item>
-		<item name="wcf.acp.group.option.admin.user.canManageCompulsory"><![CDATA[Can manage compulsory topics]]></item>
-	</category>
-	
-	<!-- Menu -->
-	<category name="wcf.acp.menu">
-		<item name="wcf.acp.menu.link.compulsory"><![CDATA[Compulsory Topic]]></item>
-		<item name="wcf.acp.menu.link.compulsory.add"><![CDATA[Add Topic]]></item>
-		<item name="wcf.acp.menu.link.compulsory.list"><![CDATA[Topics]]></item>
-	</category>
-	
-	<!-- ACP -->
-	<category name="wcf.acp.compulsory">
-		<item name="wcf.acp.compulsory.action"><![CDATA[Actions]]></item>
-		<item name="wcf.acp.compulsory.action.accept"><![CDATA[On Approval]]></item>
-		<item name="wcf.acp.compulsory.action.description"><![CDATA[Optionally, user actions may be executed on approval and/or refusal.]]></item>
-		<item name="wcf.acp.compulsory.action.group.add"><![CDATA[Assign to User Groups]]></item>
-		<item name="wcf.acp.compulsory.action.group.add.description"><![CDATA[Members will be assigned to the choosen user groups.]]></item>
-		<item name="wcf.acp.compulsory.action.group.error.invalidGroup"><![CDATA[An invalid user group was choosen.]]></item>
-		<item name="wcf.acp.compulsory.action.group.remove"><![CDATA[Remove from User Groups]]></item>
-		<item name="wcf.acp.compulsory.action.group.remove.description"><![CDATA[Members will be removed from the choosen user groups.]]></item>
-		<item name="wcf.acp.compulsory.action.refuse"><![CDATA[On Refusal]]></item>
-		<item name="wcf.acp.compulsory.action.url"><![CDATA[Redirection]]></item>
-		<item name="wcf.acp.compulsory.action.url.description"><![CDATA[Complete URL for the redirection after approval / refusal. If this field is left empty, redirection will be according to the URL defined in “Configuration”.]]></item>
-		<item name="wcf.acp.compulsory.action.user"><![CDATA[User State]]></item>
-		<item name="wcf.acp.compulsory.action.user.ban"><![CDATA[ban]]></item>
-		<item name="wcf.acp.compulsory.action.user.description"><![CDATA[The user action will be executed before any group action.]]></item>
-		<item name="wcf.acp.compulsory.action.user.disable"><![CDATA[disable]]></item>
-		<item name="wcf.acp.compulsory.action.user.enable"><![CDATA[enable]]></item>
-		<item name="wcf.acp.compulsory.action.user.none"><![CDATA[no action]]></item>
-		<item name="wcf.acp.compulsory.add"><![CDATA[Add Topic]]></item>
-		<item name="wcf.acp.compulsory.addNewUser"><![CDATA[Include new users]]></item>
-		<item name="wcf.acp.compulsory.addNewUser.description"><![CDATA[Display the compulsory topic to users having been added after topic creation.]]></item>
-		<item name="wcf.acp.compulsory.conditions"><![CDATA[Conditions]]></item>
-		<item name="wcf.acp.compulsory.conditions.description"><![CDATA[If no conditions are specified, the topic will be displayed for every user.]]></item>
-		<item name="wcf.acp.compulsory.content"><![CDATA[Text]]></item>
-		<item name="wcf.acp.compulsory.content.description"><![CDATA[You may use the placeholder “[username]” to directly address users with their name.]]></item>
-		<item name="wcf.acp.compulsory.copy"><![CDATA[Copy Topic]]></item>
-		<item name="wcf.acp.compulsory.copy.confirm"><![CDATA[Do you really want to copy the topic?]]></item>
-		<item name="wcf.acp.compulsory.delete.sure"><![CDATA[Do you really want to delete this topic?]]></item>
-		<item name="wcf.acp.compulsory.display"><![CDATA[Content]]></item>
-		<item name="wcf.acp.compulsory.display.description"><![CDATA[Title and text to be displayed to users.]]></item>
-		<item name="wcf.acp.compulsory.edit"><![CDATA[Edit Topic]]></item>
-		<item name="wcf.acp.compulsory.general"><![CDATA[General]]></item>
-		<item name="wcf.acp.compulsory.general.description"><![CDATA[General setting of the topic.]]></item>
-		<item name="wcf.acp.compulsory.hasPeriod"><![CDATA[Restrict Period]]></item>
-		<item name="wcf.acp.compulsory.isDisabled"><![CDATA[Deactivate topic]]></item>
-		<item name="wcf.acp.compulsory.isDisabled.description"><![CDATA[After initial activation, changes to the topic will only apply to users, who have not yet been processed by it. Retroactive changes are not possible.]]></item>
-		<item name="wcf.acp.compulsory.isDisabled.warning"><![CDATA[The topic was activated before. Changes to the topic will only apply to users, who have not yet been processed by. Retroactive changes are not possible.]]></item>
-		<item name="wcf.acp.compulsory.isRefusable"><![CDATA[Allow refusal]]></item>
-		<item name="wcf.acp.compulsory.isRefusable.description"><![CDATA[Members may explicitely refuse to accept the topic.]]></item>
-		<item name="wcf.acp.compulsory.list"><![CDATA[Topics]]></item>
-		<item name="wcf.acp.compulsory.pages"><![CDATA[Pages]]></item>
-		<item name="wcf.acp.compulsory.pages.description"><![CDATA[The topic is displayed only on the following pages. Please, enter the complete page URL(s) as shown in the community; one URL per line. “*” can be used as placeholder at the end of the URL. Leave the field empty to display the topic on all pages.]]></item>
-		<item name="wcf.acp.compulsory.period"><![CDATA[Period]]></item>
-		<item name="wcf.acp.compulsory.period.description"><![CDATA[Topics will be enabled and disabled auomatically for this period of time.]]></item>
-		<item name="wcf.acp.compulsory.period.end"><![CDATA[from]]></item>
-		<item name="wcf.acp.compulsory.period.error.endBeforeStart"><![CDATA[The end date is prior to the start date.]]></item>
-		<item name="wcf.acp.compulsory.period.error.endInPast"><![CDATA[The end date is in the past.]]></item>
-		<item name="wcf.acp.compulsory.period.error.invalidEnd"><![CDATA[The end date is invalid.]]></item>
-		<item name="wcf.acp.compulsory.period.error.invalidStart"><![CDATA[The start date is invalid.]]></item>
-		<item name="wcf.acp.compulsory.period.start"><![CDATA[until]]></item>
-		<item name="wcf.acp.compulsory.statAccept"><![CDATA[Approval]]></item>
-		<item name="wcf.acp.compulsory.statRefuse"><![CDATA[Refusal]]></item>
-		<item name="wcf.acp.compulsory.stats"><![CDATA[Statistics]]></item>
-		<item name="wcf.acp.compulsory.stats.accept"><![CDATA[Approvals]]></item>
-		<item name="wcf.acp.compulsory.stats.accept.count"><![CDATA[{#$acceptCount}{if $acceptCountDeleted} + {#$acceptCountDeleted}{/if}]]></item>
-		<item name="wcf.acp.compulsory.stats.accept.deleted"><![CDATA[{#$acceptCountDeleted} user{if $acceptCountDeleted != 1}s{/if} {if $acceptCountDeleted == 1}was{else}were{/if} deleted after the approval.]]></item>
-		<item name="wcf.acp.compulsory.stats.accept.last"><![CDATA[{#$acceptCount} {if $acceptCount == 1}current user has{else}current users have{/if} approved so far. Most recently:]]></item>
-		<item name="wcf.acp.compulsory.stats.none"><![CDATA[No current users.]]></item>
-		<item name="wcf.acp.compulsory.stats.refuse"><![CDATA[Refusals]]></item>
-		<item name="wcf.acp.compulsory.stats.refuse.count"><![CDATA[{#$refuseCount}{if $refuseCountDeleted} + {#$refuseCountDeleted}{/if}]]></item>
-		<item name="wcf.acp.compulsory.stats.refuse.deleted"><![CDATA[{#$refuseCountDeleted} user{if $refuseCountDeleted != 1}s{/if} {if $refuseCountDeleted == 1}was{else}were{/if} deleted after the refusal.]]></item>
-		<item name="wcf.acp.compulsory.stats.refuse.last"><![CDATA[{#$refuseCount} {if $refuseCount == 1}current user has{else}current users have{/if} refused so far. Most recently:]]></item>
-		<item name="wcf.acp.compulsory.stats.remaining"><![CDATA[Remaining Users]]></item>
-		<item name="wcf.acp.compulsory.stats.remaining.left"><![CDATA[{#$remainingCount} of currently {#$totalCount} user{if $totalCount != 1}s{/if} {if $remainingCount == 1}has{else}have{/if} not yet reacted.]]></item>
-		<item name="wcf.acp.compulsory.stats.show.all"><![CDATA[Show all users]]></item>
-		<item name="wcf.acp.compulsory.subject"><![CDATA[Title]]></item>
-		<item name="wcf.acp.compulsory.subject.description"><![CDATA[Title of this topic. A maximum of 255 characters is allowed]]></item>
-		<item name="wcf.acp.compulsory.subject.error.tooLong"><![CDATA[The title is too long.]]></item>
-		<item name="wcf.acp.compulsory.time"><![CDATA[Time]]></item>
-		<item name="wcf.acp.compulsory.title"><![CDATA[Description]]></item>
-		<item name="wcf.acp.compulsory.title.description"><![CDATA[Short description of this topic. A maximum of 80 characters is allowed.]]></item>
-		<item name="wcf.acp.compulsory.title.error.tooLong"><![CDATA[The description is too long.]]></item>
-		<item name="wcf.acp.compulsory.username"><![CDATA[User]]></item>
-	</category>
-	
-	<category name="wcf.user.compulsory">
-		<item name="wcf.user.compulsory.ban.accept"><![CDATA[You approved the compulsory topic “{$subject}”.]]></item>
-		<item name="wcf.user.compulsory.ban.refuse"><![CDATA[You refused the complusory topic “{$subject}”.]]></item>
-		<item name="wcf.user.compulsory.button.accept"><![CDATA[Approve]]></item>
-		<item name="wcf.user.compulsory.button.accept.sure"><![CDATA[{if $acceptConfirmAction != 'none'}The user account will be {if $acceptConfirmAction == 'ban'}banned.{elseif $acceptConfirmAction == 'enable'}enabled.{elseif $acceptConfirmAction == 'disable'}disabled.{/if}{/if}{if $acceptConfirmGroup} The user group assignments will be changed.{/if}{if $acceptConfirmBreak}<br>{/if}Do you really want to approve?]]></item>
-		<item name="wcf.user.compulsory.button.print"><![CDATA[Print]]></item>
-		<item name="wcf.user.compulsory.button.refuse"><![CDATA[Refuse]]></item>
-		<item name="wcf.user.compulsory.button.refuse.sure"><![CDATA[{if $refuseConfirmAction != 'none'}The user account will be {if $refuseConfirmAction == 'ban'}banned.{elseif $refuseConfirmAction == 'enable'}enabled.{elseif $refuseConfirmAction == 'disable'}disabled.{/if}{/if}{if $refuseConfirmGroup} The user group assignments will be changed.{/if}{if $refuseConfirmBreak}<br>{/if}Do you really want to refuse?]]></item>
-		<item name="wcf.user.compulsory.topic"><![CDATA[Compulsory Topic]]></item>
-	</category>
+    <!-- Options -->
+    <category name="wcf.acp.option">
+        <item name="wcf.acp.option.module_compulsory"><![CDATA[Compulsory Topic]]></item>
+        <item name="wcf.acp.option.category.user.compulsory"><![CDATA[Compulsory Topic]]></item>
+        <item name="wcf.acp.option.user_compulsory_defaultTitle"><![CDATA[Default Page Title]]></item>
+        <item name="wcf.acp.option.user_compulsory_defaultTitle.description"><![CDATA[Selecting “No” will display the compulsory title as page title.]]></item>
+        <item name="wcf.acp.option.user_compulsory_exceptions"><![CDATA[Exceptions]]></item>
+        <item name="wcf.acp.option.user_compulsory_exceptions.description"><![CDATA[ID of pages to be shown despite a compulsory topic. One ID per line. The page ID can be found in ACP via Content - Pages.]]></item>
+        <item name="wcf.acp.option.user_compulsory_print"><![CDATA[Print]]></item>
+        <item name="wcf.acp.option.user_compulsory_print.description"><![CDATA[Shows or hides a Print button on the coumpulsory page.]]></item>
+        <item name="wcf.acp.option.user_compulsory_stats_old"><![CDATA[Old Statistics]]></item>
+        <item name="wcf.acp.option.user_compulsory_stats_old.description"><![CDATA[Switches between old and new statistics view.]]></item>
+        <item name="wcf.acp.option.user_compulsory_url"><![CDATA[Redirection]]></item>
+        <item name="wcf.acp.option.user_compulsory_url.description"><![CDATA[Users will be redirected to the given URL after acknowledgement of compulsory topics. If this field is left empty, they will be redirected to the community's main page.]]></item>
+    </category>
+
+    <!-- Group Permission -->
+    <category name="wcf.acp.group">
+        <item name="wcf.acp.group.option.category.admin.user.compulsory"><![CDATA[Compulsory Topic]]></item>
+        <item name="wcf.acp.group.option.admin.user.canManageCompulsory"><![CDATA[Can manage compulsory topics]]></item>
+    </category>
+
+    <!-- Menu -->
+    <category name="wcf.acp.menu">
+        <item name="wcf.acp.menu.link.compulsory"><![CDATA[Compulsory Topic]]></item>
+        <item name="wcf.acp.menu.link.compulsory.add"><![CDATA[Add Topic]]></item>
+        <item name="wcf.acp.menu.link.compulsory.list"><![CDATA[Topics]]></item>
+    </category>
+
+    <!-- ACP -->
+    <category name="wcf.acp.compulsory">
+        <item name="wcf.acp.compulsory.action"><![CDATA[Actions]]></item>
+        <item name="wcf.acp.compulsory.action.accept"><![CDATA[On Approval]]></item>
+        <item name="wcf.acp.compulsory.action.description"><![CDATA[Optionally, user actions may be executed on approval and/or refusal.]]></item>
+        <item name="wcf.acp.compulsory.action.group.add"><![CDATA[Assign to User Groups]]></item>
+        <item name="wcf.acp.compulsory.action.group.add.description"><![CDATA[Members will be assigned to the choosen user groups.]]></item>
+        <item name="wcf.acp.compulsory.action.group.error.invalidGroup"><![CDATA[An invalid user group was choosen.]]></item>
+        <item name="wcf.acp.compulsory.action.group.remove"><![CDATA[Remove from User Groups]]></item>
+        <item name="wcf.acp.compulsory.action.group.remove.description"><![CDATA[Members will be removed from the choosen user groups.]]></item>
+        <item name="wcf.acp.compulsory.action.refuse"><![CDATA[On Refusal]]></item>
+        <item name="wcf.acp.compulsory.action.url"><![CDATA[Redirection]]></item>
+        <item name="wcf.acp.compulsory.action.url.description"><![CDATA[Complete URL for the redirection after approval / refusal. If this field is left empty, redirection will be according to the URL defined in “Configuration”.]]></item>
+        <item name="wcf.acp.compulsory.action.user"><![CDATA[User State]]></item>
+        <item name="wcf.acp.compulsory.action.user.ban"><![CDATA[ban]]></item>
+        <item name="wcf.acp.compulsory.action.user.description"><![CDATA[The user action will be executed before any group action.]]></item>
+        <item name="wcf.acp.compulsory.action.user.disable"><![CDATA[disable]]></item>
+        <item name="wcf.acp.compulsory.action.user.enable"><![CDATA[enable]]></item>
+        <item name="wcf.acp.compulsory.action.user.none"><![CDATA[no action]]></item>
+        <item name="wcf.acp.compulsory.add"><![CDATA[Add Topic]]></item>
+        <item name="wcf.acp.compulsory.addNewUser"><![CDATA[Include new users]]></item>
+        <item name="wcf.acp.compulsory.addNewUser.description"><![CDATA[Display the compulsory topic to users having been added after topic creation.]]></item>
+        <item name="wcf.acp.compulsory.conditions"><![CDATA[Conditions]]></item>
+        <item name="wcf.acp.compulsory.conditions.description"><![CDATA[If no conditions are specified, the topic will be displayed for every user.]]></item>
+        <item name="wcf.acp.compulsory.content"><![CDATA[Text]]></item>
+        <item name="wcf.acp.compulsory.content.description"><![CDATA[You may use the placeholder “[username]” to directly address users with their name.]]></item>
+        <item name="wcf.acp.compulsory.copy"><![CDATA[Copy Topic]]></item>
+        <item name="wcf.acp.compulsory.copy.confirm"><![CDATA[Do you really want to copy the topic?]]></item>
+        <item name="wcf.acp.compulsory.delete.sure"><![CDATA[Do you really want to delete this topic?]]></item>
+        <item name="wcf.acp.compulsory.display"><![CDATA[Content]]></item>
+        <item name="wcf.acp.compulsory.display.description"><![CDATA[Title and text to be displayed to users.]]></item>
+        <item name="wcf.acp.compulsory.edit"><![CDATA[Edit Topic]]></item>
+        <item name="wcf.acp.compulsory.general"><![CDATA[General]]></item>
+        <item name="wcf.acp.compulsory.general.description"><![CDATA[General setting of the topic.]]></item>
+        <item name="wcf.acp.compulsory.hasPeriod"><![CDATA[Restrict Period]]></item>
+        <item name="wcf.acp.compulsory.isDisabled"><![CDATA[Deactivate topic]]></item>
+        <item name="wcf.acp.compulsory.isDisabled.description"><![CDATA[After initial activation, changes to the topic will only apply to users, who have not yet been processed by it. Retroactive changes are not possible.]]></item>
+        <item name="wcf.acp.compulsory.isDisabled.warning"><![CDATA[The topic was activated before. Changes to the topic will only apply to users, who have not yet been processed by. Retroactive changes are not possible.]]></item>
+        <item name="wcf.acp.compulsory.isRefusable"><![CDATA[Allow refusal]]></item>
+        <item name="wcf.acp.compulsory.isRefusable.description"><![CDATA[Members may explicitely refuse to accept the topic.]]></item>
+        <item name="wcf.acp.compulsory.list"><![CDATA[Topics]]></item>
+        <item name="wcf.acp.compulsory.pages"><![CDATA[Pages]]></item>
+        <item name="wcf.acp.compulsory.pages.description"><![CDATA[The topic is displayed only on the following pages. Please, enter the complete page URL(s) as shown in the community; one URL per line. “*” can be used as placeholder at the end of the URL. Leave the field empty to display the topic on all pages.]]></item>
+        <item name="wcf.acp.compulsory.period"><![CDATA[Period]]></item>
+        <item name="wcf.acp.compulsory.period.description"><![CDATA[Topics will be enabled and disabled auomatically for this period of time.]]></item>
+        <item name="wcf.acp.compulsory.period.end"><![CDATA[from]]></item>
+        <item name="wcf.acp.compulsory.period.error.endBeforeStart"><![CDATA[The end date is prior to the start date.]]></item>
+        <item name="wcf.acp.compulsory.period.error.endInPast"><![CDATA[The end date is in the past.]]></item>
+        <item name="wcf.acp.compulsory.period.error.invalidEnd"><![CDATA[The end date is invalid.]]></item>
+        <item name="wcf.acp.compulsory.period.error.invalidStart"><![CDATA[The start date is invalid.]]></item>
+        <item name="wcf.acp.compulsory.period.start"><![CDATA[until]]></item>
+        <item name="wcf.acp.compulsory.statAccept"><![CDATA[Approval]]></item>
+        <item name="wcf.acp.compulsory.statRefuse"><![CDATA[Refusal]]></item>
+        <item name="wcf.acp.compulsory.stats"><![CDATA[Statistics]]></item>
+        <item name="wcf.acp.compulsory.stats.accept"><![CDATA[Approvals]]></item>
+        <item name="wcf.acp.compulsory.stats.accept.count"><![CDATA[{#$acceptCount}{if $acceptCountDeleted} + {#$acceptCountDeleted}{/if}]]></item>
+        <item name="wcf.acp.compulsory.stats.accept.deleted"><![CDATA[{#$acceptCountDeleted} user{if $acceptCountDeleted != 1}s{/if} {if $acceptCountDeleted == 1}was{else}were{/if} deleted after the approval.]]></item>
+        <item name="wcf.acp.compulsory.stats.accept.last"><![CDATA[{#$acceptCount} {if $acceptCount == 1}current user has{else}current users have{/if} approved so far. Most recently:]]></item>
+        <item name="wcf.acp.compulsory.stats.none"><![CDATA[No current users.]]></item>
+        <item name="wcf.acp.compulsory.stats.refuse"><![CDATA[Refusals]]></item>
+        <item name="wcf.acp.compulsory.stats.refuse.count"><![CDATA[{#$refuseCount}{if $refuseCountDeleted} + {#$refuseCountDeleted}{/if}]]></item>
+        <item name="wcf.acp.compulsory.stats.refuse.deleted"><![CDATA[{#$refuseCountDeleted} user{if $refuseCountDeleted != 1}s{/if} {if $refuseCountDeleted == 1}was{else}were{/if} deleted after the refusal.]]></item>
+        <item name="wcf.acp.compulsory.stats.refuse.last"><![CDATA[{#$refuseCount} {if $refuseCount == 1}current user has{else}current users have{/if} refused so far. Most recently:]]></item>
+        <item name="wcf.acp.compulsory.stats.remaining"><![CDATA[Remaining Users]]></item>
+        <item name="wcf.acp.compulsory.stats.remaining.left"><![CDATA[{#$remainingCount} of currently {#$totalCount} user{if $totalCount != 1}s{/if} {if $remainingCount == 1}has{else}have{/if} not yet reacted.]]></item>
+        <item name="wcf.acp.compulsory.stats.show.all"><![CDATA[Show all users]]></item>
+        <item name="wcf.acp.compulsory.subject"><![CDATA[Title]]></item>
+        <item name="wcf.acp.compulsory.subject.description"><![CDATA[Title of this topic. A maximum of 255 characters is allowed]]></item>
+        <item name="wcf.acp.compulsory.subject.error.tooLong"><![CDATA[The title is too long.]]></item>
+        <item name="wcf.acp.compulsory.time"><![CDATA[Time]]></item>
+        <item name="wcf.acp.compulsory.title"><![CDATA[Description]]></item>
+        <item name="wcf.acp.compulsory.title.description"><![CDATA[Short description of this topic. A maximum of 80 characters is allowed.]]></item>
+        <item name="wcf.acp.compulsory.title.error.tooLong"><![CDATA[The description is too long.]]></item>
+        <item name="wcf.acp.compulsory.username"><![CDATA[User]]></item>
+    </category>
+
+    <category name="wcf.user.compulsory">
+        <item name="wcf.user.compulsory.ban.accept"><![CDATA[You approved the compulsory topic “{$subject}”.]]></item>
+        <item name="wcf.user.compulsory.ban.refuse"><![CDATA[You refused the complusory topic “{$subject}”.]]></item>
+        <item name="wcf.user.compulsory.button.accept"><![CDATA[Approve]]></item>
+        <item name="wcf.user.compulsory.button.accept.sure"><![CDATA[{if $acceptConfirmAction != 'none'}The user account will be {if $acceptConfirmAction == 'ban'}banned.{elseif $acceptConfirmAction == 'enable'}enabled.{elseif $acceptConfirmAction == 'disable'}disabled.{/if}{/if}{if $acceptConfirmGroup} The user group assignments will be changed.{/if}{if $acceptConfirmBreak}<br>{/if}Do you really want to approve?]]></item>
+        <item name="wcf.user.compulsory.button.print"><![CDATA[Print]]></item>
+        <item name="wcf.user.compulsory.button.refuse"><![CDATA[Refuse]]></item>
+        <item name="wcf.user.compulsory.button.refuse.sure"><![CDATA[{if $refuseConfirmAction != 'none'}The user account will be {if $refuseConfirmAction == 'ban'}banned.{elseif $refuseConfirmAction == 'enable'}enabled.{elseif $refuseConfirmAction == 'disable'}disabled.{/if}{/if}{if $refuseConfirmGroup} The user group assignments will be changed.{/if}{if $refuseConfirmBreak}<br>{/if}Do you really want to refuse?]]></item>
+        <item name="wcf.user.compulsory.topic"><![CDATA[Compulsory Topic]]></item>
+    </category>
 </language>

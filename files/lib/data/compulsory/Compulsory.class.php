@@ -1,10 +1,28 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\data\compulsory;
 
-use wcf\data\compulsory\CompulsoryList;
 use wcf\data\compulsory\content\CompulsoryContent;
-use wcf\data\condition\Condition;
 use wcf\data\DatabaseObject;
 use wcf\data\user\UserList;
 use wcf\system\condition\ConditionHandler;
@@ -16,10 +34,6 @@ use wcf\util\StringUtil;
 
 /**
  * Represents a Compulsory
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class Compulsory extends DatabaseObject implements IRouteController
 {
@@ -36,7 +50,7 @@ class Compulsory extends DatabaseObject implements IRouteController
     /**
      * list of compulsoryIDs
      */
-    protected $compulsoryIDs = null;
+    protected $compulsoryIDs;
 
     /**
      * compulsory content grouped by language id
@@ -46,7 +60,7 @@ class Compulsory extends DatabaseObject implements IRouteController
     /**
      * true if the active user has dismissed the compulsory
      */
-    protected $isDismissed = null;
+    protected $isDismissed;
 
     /**
      * @inheritDoc
@@ -87,9 +101,9 @@ class Compulsory extends DatabaseObject implements IRouteController
         if ($this->compulsoryContents === null) {
             $this->compulsoryContents = [];
 
-            $sql = "SELECT	*
-					FROM	wcf" . WCF_N . "_compulsory_content
-					WHERE	compulsoryID = ?";
+            $sql = "SELECT    *
+                    FROM    wcf" . WCF_N . "_compulsory_content
+                    WHERE    compulsoryID = ?";
             $statement = WCF::getDB()->prepareStatement($sql);
             $statement->execute([$this->compulsoryID]);
             while ($row = $statement->fetchArray()) {
@@ -120,6 +134,7 @@ class Compulsory extends DatabaseObject implements IRouteController
                 $string = $this->compulsoryContents[0]->content;
             }
         }
+
         return StringUtil::truncateHTML(StringUtil::stripHTML($string), $length);
     }
 
@@ -148,9 +163,9 @@ class Compulsory extends DatabaseObject implements IRouteController
                     $compulsoryIDs = [];
 
                     // get active dismisses
-                    $sql = "SELECT	compulsoryID
-							FROM	wcf" . WCF_N . "_compulsory_dismissed
-							WHERE	userID = ?";
+                    $sql = "SELECT    compulsoryID
+                            FROM    wcf" . WCF_N . "_compulsory_dismissed
+                            WHERE    userID = ?";
                     $statement = WCF::getDB()->prepareStatement($sql);
                     $statement->execute([WCF::getUser()->userID]);
                     while ($compulsoryID = $statement->fetchColumn()) {
@@ -163,7 +178,7 @@ class Compulsory extends DatabaseObject implements IRouteController
                     $compulsoryList->readObjects();
                     $compulsories = $compulsoryList->getObjects();
 
-                    if (count($compulsories)) {
+                    if (\count($compulsories)) {
                         foreach ($compulsories as $compulsory) {
                             // before user registration?
                             if ($compulsory->time < $user->registrationDate) {
@@ -187,17 +202,17 @@ class Compulsory extends DatabaseObject implements IRouteController
                     }
 
                     // dismiss found compulsories and report status of this
-                    if (count($compulsoryIDs)) {
-                        $compulsoryIDs = array_unique($compulsoryIDs);
-                        UserStorageHandler::getInstance()->update(WCF::getUser()->userID, 'dismissedCompulsories', serialize($compulsoryIDs));
-                        if (in_array($this->compulsoryID, $compulsoryIDs)) {
+                    if (\count($compulsoryIDs)) {
+                        $compulsoryIDs = \array_unique($compulsoryIDs);
+                        UserStorageHandler::getInstance()->update(WCF::getUser()->userID, 'dismissedCompulsories', \serialize($compulsoryIDs));
+                        if (\in_array($this->compulsoryID, $compulsoryIDs)) {
                             $this->isDismissed = true;
                         }
                     }
                 } else {
                     // return immediately if already dismissed
-                    $dismissedCompulsoryIDs = @unserialize($dismissedCompulsories);
-                    if (in_array($this->compulsoryID, $dismissedCompulsoryIDs)) {
+                    $dismissedCompulsoryIDs = @\unserialize($dismissedCompulsories);
+                    if (\in_array($this->compulsoryID, $dismissedCompulsoryIDs)) {
                         return true;
                     }
 
@@ -219,7 +234,7 @@ class Compulsory extends DatabaseObject implements IRouteController
                         }
                         if ($dismiss) {
                             $dismissedCompulsoryIDs[] = $this->compulsoryID;
-                            UserStorageHandler::getInstance()->update($user->userID, 'dismissedCompulsories', serialize($dismissedCompulsoryIDs));
+                            UserStorageHandler::getInstance()->update($user->userID, 'dismissedCompulsories', \serialize($dismissedCompulsoryIDs));
                             $this->isDismissed = true;
                         }
                     }
@@ -235,11 +250,12 @@ class Compulsory extends DatabaseObject implements IRouteController
      */
     public function getNumberAccepted()
     {
-        $sql = "SELECT	COUNT(*) AS count
-				FROM	wcf" . WCF_N . "_compulsory_dismissed
-				WHERE	compulsoryID = ? AND choice = ? AND userID IS NOT NULL";
+        $sql = "SELECT    COUNT(*) AS count
+                FROM    wcf" . WCF_N . "_compulsory_dismissed
+                WHERE    compulsoryID = ? AND choice = ? AND userID IS NOT NULL";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute([$this->compulsoryID, 'accept']);
+
         return $statement->fetchSingleColumn();
     }
 
@@ -248,11 +264,12 @@ class Compulsory extends DatabaseObject implements IRouteController
      */
     public function getNumberAcceptedDeleted()
     {
-        $sql = "SELECT	COUNT(*) AS count
-				FROM	wcf" . WCF_N . "_compulsory_dismissed
-				WHERE	compulsoryID = ? AND choice = ? AND userID IS NULL";
+        $sql = "SELECT    COUNT(*) AS count
+                FROM    wcf" . WCF_N . "_compulsory_dismissed
+                WHERE    compulsoryID = ? AND choice = ? AND userID IS NULL";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute([$this->compulsoryID, 'accept']);
+
         return $statement->fetchSingleColumn();
     }
 
@@ -261,11 +278,12 @@ class Compulsory extends DatabaseObject implements IRouteController
      */
     public function getNumberRefused()
     {
-        $sql = "SELECT	COUNT(*) AS count
-				FROM	wcf" . WCF_N . "_compulsory_dismissed
-				WHERE	compulsoryID = ? AND choice = ? AND userID IS NOT NULL";
+        $sql = "SELECT    COUNT(*) AS count
+                FROM    wcf" . WCF_N . "_compulsory_dismissed
+                WHERE    compulsoryID = ? AND choice = ? AND userID IS NOT NULL";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute([$this->compulsoryID, 'refuse']);
+
         return $statement->fetchSingleColumn();
     }
 
@@ -274,11 +292,12 @@ class Compulsory extends DatabaseObject implements IRouteController
      */
     public function getNumberRefusedDeleted()
     {
-        $sql = "SELECT	COUNT(*) AS count
-				FROM	wcf" . WCF_N . "_compulsory_dismissed
-				WHERE	compulsoryID = ? AND choice = ? AND userID IS NULL";
+        $sql = "SELECT    COUNT(*) AS count
+                FROM    wcf" . WCF_N . "_compulsory_dismissed
+                WHERE    compulsoryID = ? AND choice = ? AND userID IS NULL";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute([$this->compulsoryID, 'refuse']);
+
         return $statement->fetchSingleColumn();
     }
 
@@ -326,6 +345,7 @@ class Compulsory extends DatabaseObject implements IRouteController
         if (!$this->addNewUser) {
             $userList->getConditionBuilder()->add('user_table.registrationDate < ?', [$this->activationTime]);
         }
+
         return $userList->countObjects();
     }
 }

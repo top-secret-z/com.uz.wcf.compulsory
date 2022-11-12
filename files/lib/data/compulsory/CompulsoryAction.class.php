@@ -1,12 +1,32 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\data\compulsory;
 
+use wcf\data\AbstractDatabaseObjectAction;
 use wcf\data\compulsory\content\CompulsoryContent;
 use wcf\data\compulsory\content\CompulsoryContentEditor;
 use wcf\data\compulsory\content\CompulsoryContentList;
 use wcf\data\condition\ConditionList;
-use wcf\data\AbstractDatabaseObjectAction;
 use wcf\data\IToggleAction;
 use wcf\system\cache\builder\CompulsoryCacheBuilder;
 use wcf\system\cache\builder\ConditionCacheBuilder;
@@ -17,10 +37,6 @@ use wcf\system\WCF;
 
 /**
  * Executes compulsory-related actions.
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAction
 {
@@ -33,7 +49,9 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
      * @inheritDoc
      */
     protected $permissionsCreate = ['admin.user.canManageCompulsory'];
+
     protected $permissionsDelete = ['admin.user.canManageCompulsory'];
+
     protected $permissionsUpdate = ['admin.user.canManageCompulsory'];
 
     /**
@@ -41,7 +59,7 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
      */
     protected $requireACP = ['delete', 'toggle', 'update'];
 
-    public $compulsory = null;
+    public $compulsory;
 
     /**
      * @inheritDoc
@@ -74,9 +92,9 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
                 $compulsory->activationTime = TIME_NOW;
             }
             $compulsory->update([
-                                    'isDisabled' => $compulsory->isDisabled ? 0 : 1,
-                                    'activationTime' => $compulsory->activationTime
-                                ]);
+                'isDisabled' => $compulsory->isDisabled ? 0 : 1,
+                'activationTime' => $compulsory->activationTime,
+            ]);
         }
 
         // reset cache
@@ -98,11 +116,11 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
                 }
 
                 $compulsoryContent = CompulsoryContentEditor::create([
-                                                                         'compulsoryID' => $compulsory->compulsoryID,
-                                                                         'languageID' => $languageID ?: null,
-                                                                         'subject' => $content['subject'],
-                                                                         'content' => $content['content']
-                                                                     ]);
+                    'compulsoryID' => $compulsory->compulsoryID,
+                    'languageID' => $languageID ?: null,
+                    'subject' => $content['subject'],
+                    'content' => $content['content'],
+                ]);
                 $compulsoryContentEditor = new CompulsoryContentEditor($compulsoryContent);
 
                 // save embedded objects
@@ -142,17 +160,17 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
                         // update
                         $compulsoryContentEditor = new CompulsoryContentEditor($compulsoryContent);
                         $compulsoryContentEditor->update([
-                                                             'content' => $content['content'],
-                                                             'subject' => $content['subject']
-                                                         ]);
+                            'content' => $content['content'],
+                            'subject' => $content['subject'],
+                        ]);
                     } else {
                         /** @var CompulsoryContent $compulsoryContent */
                         $compulsoryContent = CompulsoryContentEditor::create([
-                                                                                 'compulsoryID' => $compulsory->compulsoryID,
-                                                                                 'languageID' => $languageID ?: null,
-                                                                                 'content' => $content['content'],
-                                                                                 'subject' => $content['subject']
-                                                                             ]);
+                            'compulsoryID' => $compulsory->compulsoryID,
+                            'languageID' => $languageID ?: null,
+                            'content' => $content['content'],
+                            'subject' => $content['subject'],
+                        ]);
                         $compulsoryContentEditor = new CompulsoryContentEditor($compulsoryContent);
                     }
 
@@ -196,16 +214,16 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
         $data['activationTime'] = 0;
         $data['statAccept'] = 0;
         $data['statRefuse'] = 0;
-        $data['title'] = substr($data['title'], 0, 250) . ' (2)';
+        $data['title'] = \substr($data['title'], 0, 250) . ' (2)';
 
         $this->parameters['data'] = $data;
         $compulsory = $this->create();
 
         // copy conditions
         $definitionIDs = [];
-        $sql = "SELECT		definitionID
-				FROM		wcf" . WCF_N . "_object_type_definition
-				WHERE		definitionName LIKE ?";
+        $sql = "SELECT        definitionID
+                FROM        wcf" . WCF_N . "_object_type_definition
+                WHERE        definitionName LIKE ?";
         $statement = WCF::getDB()->prepareStatement($sql);
         $statement->execute(['com.uz.wcf.compulsory.condition']);
         while ($row = $statement->fetchArray()) {
@@ -214,9 +232,9 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
 
         foreach ($definitionIDs as $definitionID) {
             $objectTypeIDs = [];
-            $sql = "SELECT		objectTypeID
-					FROM		wcf" . WCF_N . "_object_type
-					WHERE		definitionID = ?";
+            $sql = "SELECT        objectTypeID
+                    FROM        wcf" . WCF_N . "_object_type
+                    WHERE        definitionID = ?";
             $statement = WCF::getDB()->prepareStatement($sql);
             $statement->execute([$definitionID]);
             while ($row = $statement->fetchArray()) {
@@ -229,15 +247,15 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
             $conditionList->readObjects();
             $conditions = $conditionList->getObjects();
 
-            if (count($conditions)) {
+            if (\count($conditions)) {
                 WCF::getDB()->beginTransaction();
                 $sql = "INSERT INTO wcf" . WCF_N . "_condition
-								(objectID, objectTypeID, conditionData)
-						VALUES	(?, ?, ?)";
+                                (objectID, objectTypeID, conditionData)
+                        VALUES    (?, ?, ?)";
                 $statement = WCF::getDB()->prepareStatement($sql);
 
                 foreach ($conditions as $condition) {
-                    $statement->execute([$compulsory->compulsoryID, $condition->objectTypeID, serialize($condition->conditionData)]);
+                    $statement->execute([$compulsory->compulsoryID, $condition->objectTypeID, \serialize($condition->conditionData)]);
                 }
                 WCF::getDB()->commitTransaction();
             }
@@ -253,8 +271,8 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
 
         WCF::getDB()->beginTransaction();
         $sql = "INSERT INTO wcf" . WCF_N . "_compulsory_content
-							(compulsoryID, languageID, content, subject, hasEmbeddedObjects)
-				VALUES	(?, ?, ?, ?, ?)";
+                            (compulsoryID, languageID, content, subject, hasEmbeddedObjects)
+                VALUES    (?, ?, ?, ?, ?)";
         $statement = WCF::getDB()->prepareStatement($sql);
 
         foreach ($contents as $content) {
@@ -263,7 +281,7 @@ class CompulsoryAction extends AbstractDatabaseObjectAction implements IToggleAc
         WCF::getDB()->commitTransaction();
 
         return [
-            'redirectURL' => LinkHandler::getInstance()->getLink('CompulsoryEdit', ['id' => $compulsory->compulsoryID])
+            'redirectURL' => LinkHandler::getInstance()->getLink('CompulsoryEdit', ['id' => $compulsory->compulsoryID]),
         ];
     }
 }

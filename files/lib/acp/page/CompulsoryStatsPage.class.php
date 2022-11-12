@@ -1,30 +1,48 @@
 <?php
 
+/*
+ * Copyright by Udo Zaydowicz.
+ * Modified by SoftCreatR.dev.
+ *
+ * License: http://opensource.org/licenses/lgpl-license.php
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 namespace wcf\acp\page;
 
-use wcf\page\AbstractPage;
 use wcf\data\compulsory\Compulsory;
 use wcf\data\compulsory\dismissed\CompulsoryDismissedList;
-use wcf\data\user\User;
 use wcf\data\user\UserList;
+use wcf\page\AbstractPage;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\WCF;
 
 /**
  * Shows the compulsory stats page
- *
- * @author        2016-2022 Darkwood.Design
- * @license        Commercial Darkwood.Design License <https://darkwood.design/lizenz/>
- * @package        com.uz.wcf.compulsory
  */
 class CompulsoryStatsPage extends AbstractPage
 {
     /**
      * Compulsory / stats data
      */
-    public $compulsory = null;
-    public $acceptList = null;
-    public $refuseList = null;
+    public $compulsory;
+
+    public $acceptList;
+
+    public $refuseList;
+
     public $remainingUsers = [];
 
     /**
@@ -54,7 +72,7 @@ class CompulsoryStatsPage extends AbstractPage
         }
 
         if (isset($_REQUEST['id'])) {
-            $id = intval($_REQUEST['id']);
+            $id = \intval($_REQUEST['id']);
         }
         $this->compulsory = new Compulsory($id);
         if (!$this->compulsory->compulsoryID) {
@@ -133,16 +151,16 @@ class CompulsoryStatsPage extends AbstractPage
 
         // assign parameters
         WCF::getTPL()->assign([
-                                  'compulsory' => $this->compulsory,
-                                  'acceptCount' => USER_COMPULSORY_STATS_OLD ? count($this->acceptList) : $this->compulsory->getNumberAccepted(),
-                                  'acceptCountDeleted' => $this->compulsory->getNumberAcceptedDeleted(),
-                                  'acceptUsers' => $this->acceptList,
-                                  'refuseCount' => USER_COMPULSORY_STATS_OLD ? count($this->refuseList) : $this->compulsory->getNumberRefused(),
-                                  'refuseCountDeleted' => $this->compulsory->getNumberRefusedDeleted(),
-                                  'refuseUsers' => $this->refuseList,
-                                  'remainingCount' => USER_COMPULSORY_STATS_OLD ? count($this->remainingUsers) : $this->compulsory->getNumberRemaining(),
-                                  'remainingUsers' => $this->remainingUsers,
-                                  'totalCount' => $this->compulsory->getNumberTotal()
-                              ]);
+            'compulsory' => $this->compulsory,
+            'acceptCount' => USER_COMPULSORY_STATS_OLD ? \count($this->acceptList) : $this->compulsory->getNumberAccepted(),
+            'acceptCountDeleted' => $this->compulsory->getNumberAcceptedDeleted(),
+            'acceptUsers' => $this->acceptList,
+            'refuseCount' => USER_COMPULSORY_STATS_OLD ? \count($this->refuseList) : $this->compulsory->getNumberRefused(),
+            'refuseCountDeleted' => $this->compulsory->getNumberRefusedDeleted(),
+            'refuseUsers' => $this->refuseList,
+            'remainingCount' => USER_COMPULSORY_STATS_OLD ? \count($this->remainingUsers) : $this->compulsory->getNumberRemaining(),
+            'remainingUsers' => $this->remainingUsers,
+            'totalCount' => $this->compulsory->getNumberTotal(),
+        ]);
     }
 }
